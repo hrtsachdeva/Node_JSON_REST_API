@@ -1,15 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
-const bodyparser = require('body-parser');
+var bodyParser = require('body-parser')
 const app = express();
 
 const productRoute = require('./api/routes/products');
-
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 app.use(morgan('dev'))
 app.use('/products',productRoute);
 
-app.use(bodyparser.urlencoded({extended:false}));
-app.use(bodyparser.json());
+
 
 app.use((req,res,next)=>{
     const error =new Error('not found');

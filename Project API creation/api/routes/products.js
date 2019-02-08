@@ -9,13 +9,16 @@ router.get('/',(req ,res,next) =>
 } );
 
 router.post('/',(req ,res,next) =>
-{
-    // const product ={
-    //     name: req.body.name
-    // };
+{   
+    const prod = {
+        names: req.body.hello
+    };
+    
     res.status(200).json({
         message: 'handling post request ',
-        // data:product
+        data : prod
+        
+        
     });
 } );
 
