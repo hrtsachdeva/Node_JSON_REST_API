@@ -3,24 +3,14 @@ var mysql      = require('mysql');
 const router = express.Router();
 
 
-// dbcode starts
+
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
     database : 'project'
   });
-//   connection.connect();
 
-//   connection.query('SELECT * from users', function(err, rows, fields) {
-//     if (!err)
-//       console.log('The solution is: ', rows);
-//     else
-//       console.log('Error while performing Query.');
-//   });
-  
-//   connection.end();  
-  //db code ends
 
 router.get('/',(req ,res,next) =>
 {
