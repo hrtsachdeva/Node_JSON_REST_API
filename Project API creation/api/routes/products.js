@@ -1,11 +1,52 @@
 const express = require('express');
+var mysql      = require('mysql');
 const router = express.Router();
+
+
+// dbcode starts
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'project'
+  });
+//   connection.connect();
+
+//   connection.query('SELECT * from users', function(err, rows, fields) {
+//     if (!err)
+//       console.log('The solution is: ', rows);
+//     else
+//       console.log('Error while performing Query.');
+//   });
+  
+//   connection.end();  
+  //db code ends
 
 router.get('/',(req ,res,next) =>
 {
-    res.status(200).json({
-        message: 'handling get request '
-    });
+
+    //db code starts
+    connection.connect();
+    connection.query('SELECT * from users', function(err, rows, fields) {
+        if (!err)
+        {
+             res.status(200).json({
+                message: rows
+             });
+        }
+        else{
+            res.status(200).json({
+                message: "Error"
+             });
+        }
+          
+      });
+      
+      connection.end();  
+    //db code ends
+    // res.status(200).json({
+    //     message: 'handling get request '
+    // });
 } );
 
 router.post('/',(req ,res,next) =>
