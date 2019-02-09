@@ -4,13 +4,14 @@ var bodyParser = require('body-parser')
 const app = express();
 
 const productRoute = require('./api/routes/products');
+const userRoute = require('./api/routes/users');
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 app.use(morgan('dev'))
 app.use('/products',productRoute);
-
+app.use('/users',userRoute);
 
 
 app.use((req,res,next)=>{
