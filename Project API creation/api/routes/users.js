@@ -84,7 +84,7 @@ router.delete('/deleteuser',(req ,res,next) =>
       
       connection.end();  
 } );
-
+//read file
 router.get('/read',(req,res,next)=>{
 
     connection.connect();
@@ -118,7 +118,7 @@ router.get('/read',(req,res,next)=>{
       
       connection.end();  
 });
-
+//write file
 router.post('/write',(req,res,next)=>{
 
     connection.connect();
@@ -152,7 +152,7 @@ router.post('/write',(req,res,next)=>{
       
       connection.end();  
 });
-
+//delete file
 router.delete('/delete',(req,res,next)=>{
 
     connection.connect();
